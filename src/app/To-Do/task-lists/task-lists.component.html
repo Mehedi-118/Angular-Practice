@@ -1,0 +1,13 @@
+<div class="container">
+  <app-add-task (AddTask)="AddTask($event)"></app-add-task>
+</div>
+<div *ngIf="this.TaskList.length===0; else elseBlock">No Task Available.</div>      <!--If no task Available--->
+
+<ng-template #elseBlock>                <!--If task Available--->
+  <div class="container my-4 mx-auto">
+    <div class="row" *ngFor="let item of TaskList">
+      <app-single-task [singleTask]="item" (onDeleteClicked)="DeleteTask($event)"(onDoneClicked)="MarkTaskAsDone($event)"></app-single-task>
+      </div>
+</div>
+
+</ng-template>

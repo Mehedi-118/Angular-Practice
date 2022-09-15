@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row d-flex justify-content-around border">
+    <div class="col-md-4" [ngClass]="{'strike': !singleTask.Status}">
+      <h4 class="text-primary">{{singleTask.Title}}</h4>
+      <h5>{{singleTask.Description}}</h5>
+    </div>
+    <div class="col-md-3 my-auto text-center">
+      <button class="btn btn-info m-3" (click)="DoneClicked(singleTask)"
+        *ngIf="this.singleTask.Status===false; else elseblock">Undone</button>
+      <ng-template #elseblock>
+        <button class="btn btn-success m-3" (click)="DoneClicked(singleTask)">Done</button>
+      </ng-template>
+      <button class="btn btn-danger" (click)="onDelete(singleTask)">Remove</button>
+    </div>
+  </div>
+</div>
